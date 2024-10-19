@@ -2,6 +2,7 @@ package com.example.demo.service;
 
 import com.example.demo.entity.Candidato;
 import com.example.demo.repository.CandidatoRepository;
+import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -67,4 +68,13 @@ public class CandidatoService {
         Files.copy(file.getInputStream(), filePath, StandardCopyOption.REPLACE_EXISTING);
         return fileName;// Devuelve el nombre del archivo o su ruta para almacenarla en la base de datos
     }
+    @PostConstruct
+    public void init() {
+        try {
+            Files.createDirectories(Paths.get(uploadDir));
+        } catch (IOException e) {
+            e.printStackTrace(); // Maneja el error apropiadamente
+        }
+    }
+
 }
