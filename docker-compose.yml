@@ -8,22 +8,15 @@ services:
       - "8080:8080"  # Asegúrate de que esto esté presente
     environment:
       SPRING_APPLICATION_NAME: demo
-      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/votaciones
-      SPRING_DATASOURCE_USERNAME: root
-      SPRING_DATASOURCE_PASSWORD: root
+      SPRING_DATASOURCE_URL: jdbc:postgresql://192.168.0.1/votaciones_yq6m
+      SPRING_DATASOURCE_USERNAME: votaciones_yq6m_user
+      SPRING_DATASOURCE_PASSWORD: XI45xHyTNSkSM45qKi2yPePmea7fLOTN
       SPRING_JPA_HIBERNATE_DDL_AUTO: update
       SPRING_JPA_SHOW_SQL: true
 
-  db:
-    image: postgres:latest
-    environment:
-      POSTGRES_USER: root
-      POSTGRES_PASSWORD: root
-      POSTGRES_DB: votaciones
-    ports:
-      - "5432:5432"
+
 
   adminer:
     image: adminer
     ports:
-      - "8081:8080"  # Esto está bien
+      - "8081:8080"
